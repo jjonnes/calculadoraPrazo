@@ -11,9 +11,10 @@ import com.prazo.utils.PrazoUtils;
 public class Main {
 
   public static void main(String[] args) {
+    LocalDate dataInicio = LocalDate.of(2025, 1, 2);
+
     List<LocalDate> feriados = FeriadoUtils.obterFeriados();
     List<Etapa> etapas = EtapaEnum.criarEtapas();
-    LocalDate dataInicio = LocalDate.of(2025, 1, 2);
     Scanner scanner = new Scanner(System.in);
     LocalDate dataAtual = dataInicio;
 

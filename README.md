@@ -30,6 +30,8 @@ Este projeto é uma calculadora de prazos que permite calcular datas previstas e
 
 ## Como Usar
 
-1. O programa começará solicitando que você informe os dias úteis necessários para finalizar cada etapa.
-2. As datas previstas e praticadas serão exibidas em uma tabela após cada entrada.
-3. O programa considera feriados ao calcular os dias úteis.
+1. Altera a dataInicial em Main se necessário.
+2. Alrete os feriádos se necessário.
+3. O programa começará solicitando que você informe os dias úteis necessários para finalizar cada etapa.
+4. As datas previstas e praticadas serão exibidas em uma tabela após cada entrada.
+5. O programa considera feriados ao calcular os dias úteis.
