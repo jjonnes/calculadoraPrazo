@@ -7,8 +7,8 @@ public enum EtapaEnum {
 
   ETAPA1("Etapa 1", 3),
   ETAPA2("Etapa 2", 2),
-  ETAPA3("Etapa 3", 3),
-  ETAPA4("Etapa 4", 2);
+  ETAPA3("Etapa 3", 2),
+  ETAPA4("Etapa 4", 1);
 
   private String nome;
   private int prazo;
