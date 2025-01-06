@@ -1,24 +1,35 @@
 package com.prazo.utils;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 
 public class FeriadoUtils {
 
   public static List<LocalDate> obterFeriados() {
-    return Arrays.asList(
-        LocalDate.of(2025, 1, 1),
-        LocalDate.of(2025, 3, 3),
-        LocalDate.of(2025, 3, 4),
-        LocalDate.of(2025, 4, 18),
-        LocalDate.of(2025, 5, 1),
-        LocalDate.of(2025, 9, 7),
-        LocalDate.of(2025, 10, 12),
-        LocalDate.of(2025, 11, 2),
-        LocalDate.of(2025, 11, 15),
-        LocalDate.of(2025, 12, 25)
-    // LocalDate.of(2025, 12, 25)
-    );
+    ObjectMapper objectMapper = new ObjectMapper();
+    try (InputStream inputStream = FeriadoUtils.class
+        .getClassLoader()
+        .getResourceAsStream("feriados.json")) {
+
+      if (inputStream == null) {
+        throw new RuntimeException("Arquivo feriados.json não encontrado!");
+      }
+
+      List<String> feriadosString = objectMapper
+          .readValue(inputStream, new TypeReference<List<String>>() {
+          });
+
+      return feriadosString.stream()
+          .map(LocalDate::parse)
+          .toList();
+
+    } catch (IOException e) {
+      throw new RuntimeException("Erro ao ler o arquivo feriados.json", e);
+    }
   }
 }

@@ -28,24 +28,9 @@ public enum EtapaEnum {
 
   public static List<Etapa> criarEtapas() {
     List<Etapa> etapas = new ArrayList<>();
-    for (EtapaEnum etapaEnum : EtapaEnum.values()) {
-      etapas.add(new Etapa(etapaEnum.getNome(), etapaEnum.getPrazo()));
+    for (EtapaEnum e : EtapaEnum.values()) {
+      etapas.add(new Etapa(e.getNome(), e.getPrazo()));
     }
     return etapas;
-  }
-
-  public static void exibirTabela(List<Etapa> etapas) {
-    System.out.printf("%-25s %-20s %-20s %-20s %-20s %-10s%n", "Etapa", "Prazo (dias úteis)", "Data Prevista",
-        "Data Praticada", "Data Recalculada", "Status");
-    System.out.println("=".repeat(118));
-    for (Etapa e : etapas) {
-      System.out.printf("%-25s %-20d %-20s %-20s %-20s %-10s%n",
-          e.getNome(),
-          e.getPrazo(),
-          e.getDataPrevista() != null ? e.getDataPrevista().toString() : "Não calculada",
-          e.getDataPraticada() != null ? e.getDataPraticada().toString() : "Não praticada",
-          e.getDataRecalculada() != null ? e.getDataRecalculada().toString() : "Não recalculada",
-          e.getStatus());
-    }
   }
 }
